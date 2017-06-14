@@ -1,0 +1,3 @@
+#    fms_my.example:
+#        class: FMS\UserBandle\Example
+#        arguments: ["", "plain_value", "%parameter%"]

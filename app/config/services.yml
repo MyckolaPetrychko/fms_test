@@ -1,0 +1,49 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+imports:
+    - resource: '../../vendor/friendsofsymfony/user-bundle/Resources/config/doctrine.xml'
+    - resource: '../../vendor/friendsofsymfony/user-bundle/Resources/config/util.xml'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    app.form.registration:
+            class: UserBandle\Form\RegistrationType
+            tags:
+                - { name: form.type, alias: app_user_registration }
+
+    app.referal.action_listener:
+            class: FMS\ReferalBundle\EventListener\ReferalListener
+            tags:
+                - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    fms_user.notification:
+        class: FMS\NotificationBundle\EventListener\NotificationListener
+        tags:
+            - { name: kernel.event_listener, event: fms.register_event, method: onKernelResponse }
+
+    fos_user.entity_manager:
+        class: Doctrine\ORM\EntityManager
+
+    fms_user_manager:
+        class: FMS\UserBundle\Entity\UserManager
+        arguments:
+            - '@fos_user.util.password_updater'
+            - '@fos_user.util.canonical_fields_updater'
+            - '@doctrine.orm.entity_manager'
+            - 'FMS\UserBundle\Entity\User'
+    # add more services, or override services that need manual wiring
+    # AppBundle\Service\ExampleService:
+    #     arguments:
+    #         $someArgument: 'some_value'

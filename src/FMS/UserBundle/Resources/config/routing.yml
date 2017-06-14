@@ -1,0 +1,4 @@
+fms_my_homepage:
+    path:     /
+    defaults: { _controller: FMSUserBundle:Registration:fms }
+

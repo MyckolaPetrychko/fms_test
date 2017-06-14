@@ -1,0 +1,3 @@
+fms_referal_homepage:
+    path:     /referal
+    defaults: { _controller: FMSReferalBundle:CustomReferal:index }

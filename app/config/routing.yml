@@ -1,0 +1,18 @@
+fms_notification:
+    resource: "@FMSNotificationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fms_referal:
+    resource: "@FMSReferalBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fms_my:
+    resource: "@FMSUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@FMSUserBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
