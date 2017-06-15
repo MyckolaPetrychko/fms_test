@@ -1,0 +1,5 @@
+c14d4e,127.0.0.1,GET,http://127.0.0.1:8000/register/,1497477864,,200
+03c404,127.0.0.1,POST,http://127.0.0.1:8000/register/,1497477880,,302
+997cc3,127.0.0.1,GET,http://127.0.0.1:8000/register/check-email,1497477885,,200
+d0fcfa,127.0.0.1,GET,http://127.0.0.1:8000/register/confirm/aBdqej2InrznPZpDTKLNQNtd2brb3e_o8mxbZwOi08Y,1497477924,,302
+a428e2,127.0.0.1,GET,http://127.0.0.1:8000/register/confirmed,1497477928,,200
